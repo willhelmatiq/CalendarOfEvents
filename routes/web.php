@@ -14,8 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\MyEventController::class, 'index']);
-Route::get('/users', [\App\Http\Controllers\UserController::class, 'index']);
+Route::get('/', \App\Http\Controllers\WelcomeController::class);
+Route::get('/users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+Route::get('/users/{id}', [\App\Http\Controllers\UserController::class, 'show'])->name('users.show');
+Route::get('/categories', [\App\Http\Controllers\CategoryController::class, 'index'])->name('categories.index');
+Route::get('/categories/{id}', [\App\Http\Controllers\CategoryController::class, 'show'])->name('categories.show');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

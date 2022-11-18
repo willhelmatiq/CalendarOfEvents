@@ -13,11 +13,11 @@ return [
             'url' => '/',
         ],
         [
-            'title' => 'Articles',
-            'url' => '/articles',
+            'title' => 'Categories',
+            'url' => '/categories',
         ],
         [
-            'title' => 'Writers',
+            'title' => 'Users',
             'url' => '/users',
         ],
         [
