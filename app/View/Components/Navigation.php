@@ -28,13 +28,7 @@ class Navigation extends Component
         $route = '/'.Str::of(request()->getUri())->afterLast('/');
 
         foreach ($this->menu as $key => $item) {
-        if ($route == $item['url'])
-        {
-            $this->menu[$key]['active'] = true;
-        } else
-        {
-            $this->menu[$key]['active'] = false;
-        }
+           $this->menu[$key]['active'] = request()->getRequestUri() === $item['url'];
     }
         return view('components.navigation');
     }
