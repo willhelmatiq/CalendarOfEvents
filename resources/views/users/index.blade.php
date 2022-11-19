@@ -1,4 +1,4 @@
-<x-site-layout title="List of writers">
+<x-site-layout title="List of users">
     <ul>
 
     @foreach($users as $user)
