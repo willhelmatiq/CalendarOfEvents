@@ -21,7 +21,7 @@ return new class extends Migration
             $table->timestamp('date');
             $table->integer('max_part_count');
             $table->integer('current_part_count');
-            $table->foreignId('participant_id');
+//            $table->foreignId('participant_id');
             $table->foreignId('category_id');
             $table->timestamps();
         });
