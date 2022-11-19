@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\User;
 
 class CategoryController extends Controller
 {
@@ -18,7 +17,6 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
-        return view("categories.show", compact('category'));
+        return view('categories.show', compact('category'));
     }
-
 }

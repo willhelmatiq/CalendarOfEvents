@@ -13,8 +13,7 @@ class SiteLayout extends Component
      */
     public function __construct(
         public string $title = 'MySite '
-    )
-    {
+    ) {
     }
 
     /**

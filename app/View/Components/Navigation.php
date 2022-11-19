@@ -8,6 +8,7 @@ use Illuminate\View\Component;
 class Navigation extends Component
 {
     public array $menu;
+
     /**
      * Create a new component instance.
      *
@@ -28,8 +29,9 @@ class Navigation extends Component
         $route = '/'.Str::of(request()->getUri())->afterLast('/');
 
         foreach ($this->menu as $key => $item) {
-           $this->menu[$key]['active'] = request()->getRequestUri() === $item['url'];
-    }
+            $this->menu[$key]['active'] = request()->getRequestUri() === $item['url'];
+        }
+
         return view('components.navigation');
     }
 }
