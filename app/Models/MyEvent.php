@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class MyEvent extends Model
 {
     use HasFactory;
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function participants()
+    {
+        return $this->belongsToMany(User::class, 'user_myevent', 'user_id', 'event_id', 'id', 'id');
+    }
 }

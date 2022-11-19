@@ -23,8 +23,8 @@ class MyEventFactory extends Factory
             'date' => fake()->dateTimeBetween('-6 weeks', '+6 weeks'),
             'max_part_count' => fake()->numberBetween(100, 1000),
             'current_part_count' => fake()->numberBetween(0, 'max_part_count'),
-            'participant_id' => fake()->numberBetween(1,100),
-            'category_id' => fake()->numberBetween(1,5),
+            //            'participant_id' => fake()->numberBetween(1,100),
+            'category_id' => fake()->numberBetween(1, 5),
         ];
     }
 }

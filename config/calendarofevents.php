@@ -13,6 +13,10 @@ return [
             'url' => '/',
         ],
         [
+            'title' => 'Events',
+            'url' => '/events',
+        ],
+        [
             'title' => 'Categories',
             'url' => '/categories',
         ],

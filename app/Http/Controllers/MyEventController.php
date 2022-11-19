@@ -9,9 +9,15 @@ class MyEventController extends Controller
 {
     public function index(Request $request)
     {
-        $events =  MyEvent::all();
-        //dd($events);
-        return view('welcome', compact('events'));
+        $events = MyEvent::all();
 
+        return view('events.index', compact('events'));
+    }
+
+    public function show($id)
+    {
+        $event = MyEvent::find($id);
+
+        return view('events.show', compact('event'));
     }
 }

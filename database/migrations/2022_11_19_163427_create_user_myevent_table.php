@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-//            $table->foreignId('event_id');
-            $table->integer('allowed_age');
-            $table->timestamps();
+        Schema::create('user_myevent', function (Blueprint $table) {
+            $table->foreignId('user_id');
+            $table->foreignId('event_id');
         });
     }
 
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('user_myevent');
     }
 };
