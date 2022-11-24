@@ -18,6 +18,6 @@ class MyEvent extends Model
 
     public function participants()
     {
-        return $this->belongsToMany(User::class, 'user_myevent', 'user_id', 'event_id', 'id', 'id');
+        return $this->belongsToMany(EventUser::class, 'user_myevent', 'user_id', 'event_id', 'id', 'id');
     }
 }
