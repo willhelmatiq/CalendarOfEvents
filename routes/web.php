@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//PUBLIC ROUTES==============================================================================
 Route::get('/', \App\Http\Controllers\WelcomeController::class);
 Route::resource('users', \App\Http\Controllers\UserController::class);
 Route::resource('categories', \App\Http\Controllers\CategoryController::class);
@@ -21,10 +22,14 @@ Route::resource('events', \App\Http\Controllers\MyEventController::class);
 
 require __DIR__.'/auth.php';
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+//LOGGED IN ROUTES==============================================================================
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
 
+//ADMINROUTES==============================================================================
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
