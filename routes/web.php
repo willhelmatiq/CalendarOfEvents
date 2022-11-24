@@ -15,12 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', \App\Http\Controllers\WelcomeController::class);
-Route::get('/users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
-Route::get('/users/{id}', [\App\Http\Controllers\UserController::class, 'show'])->name('users.show');
-Route::get('/categories', [\App\Http\Controllers\CategoryController::class, 'index'])->name('categories.index');
-Route::get('/categories/{id}', [\App\Http\Controllers\CategoryController::class, 'show'])->name('categories.show');
-Route::get('/events', [\App\Http\Controllers\MyEventController::class, 'index'])->name('events.index');
-Route::get('/events/{id}', [\App\Http\Controllers\MyEventController::class, 'show'])->name('events.show');
+Route::resource('users', \App\Http\Controllers\UserController::class);
+Route::resource('categories', \App\Http\Controllers\CategoryController::class);
+Route::resource('events', \App\Http\Controllers\MyEventController::class);
+//Route::get('/users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+//Route::get('/users/{id}', [\App\Http\Controllers\UserController::class, 'show'])->name('users.show');
+//Route::get('/categories', [\App\Http\Controllers\CategoryController::class, 'index'])->name('categories.index');
+//Route::get('/categories/{id}', [\App\Http\Controllers\CategoryController::class, 'show'])->name('categories.show');
+//Route::get('/events', [\App\Http\Controllers\MyEventController::class, 'index'])->name('events.index');
+//Route::get('/events/{id}', [\App\Http\Controllers\MyEventController::class, 'show'])->name('events.show');
+//Route::get('/events/create', [\App\Http\Controllers\MyEventController::class, 'show'])->name('events.create');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
