@@ -21,7 +21,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'age',
     ];
 
     /**
@@ -42,6 +41,32 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected static function booted()
+    {
+        static::creating(function ($user) {
+        });
+
+        static::created(function ($user) {
+
+            $profile = Profile::create([
+                'user_id' => $user->id,
+            ]);
+
+            // Notify the admin a new user has joined
+
+            // Send out welcome newsletter to the user
+
+            // Recalculate statistics
+
+        });
+
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
 
     public function events()
     {
