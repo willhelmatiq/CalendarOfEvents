@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('city');
             $table->timestamp('date');
             $table->integer('max_part_count');
-            $table->integer('current_part_count');
             $table->foreignId('category_id');
             $table->timestamps();
         });

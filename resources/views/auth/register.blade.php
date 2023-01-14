@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-site-layout>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
@@ -21,6 +21,12 @@
                 <x-input-label for="email" :value="__('Email')" />
                 <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            </div>
+
+            <div class="mt-4">
+                <x-input-label for="age" :value="__('Age')" />
+                <x-text-input id="age" class="block mt-1 w-full" type="number" name="age" :value="old('age')" required />
+                <x-input-error :messages="$errors->get('age')" class="mt-2" />
             </div>
 
             <!-- Password -->
@@ -57,4 +63,4 @@
             </div>
         </form>
     </x-auth-card>
-</x-guest-layout>
+</x-site-layout>

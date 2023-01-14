@@ -3,14 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\MyEvent;
+use http\Client\Curl\User;
 use Illuminate\Http\Request;
 
 class MyEventController extends Controller
 {
-    public function index(Request $request)
+    public function overview(Request $request)
     {
         $events = MyEvent::all();
 
+        return view('events.index', compact('events'));
+    }
+    public function index(Request $request)
+    {
+        $events = MyEvent::with('participants')->get();
+        ray($events);
         return view('events.index', compact('events'));
     }
 
@@ -78,5 +85,16 @@ class MyEventController extends Controller
         ray($event);
 
         return redirect()->route('events.index');
+    }
+
+    public function addparticipant(Request $request){
+        ray($request);
+        $userId=auth()->user()->id;
+        $user = User::find($userId);
+//        $event = MyEvent::find($eventId);
+//        $event->participants()->attach($user->id);
+
+        return redirect()->route('events.index');
+
     }
 }

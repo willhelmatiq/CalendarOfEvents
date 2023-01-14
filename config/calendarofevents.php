@@ -24,10 +24,10 @@ return [
             'title' => 'Users',
             'url' => '/users',
         ],
-        [
-            'title' => 'Contact Me',
-            'url' => '/contact',
-        ],
+//        [
+//            'title' => 'Contact Me',
+//            'url' => '/contact',
+//        ],
     ],
 
 ];

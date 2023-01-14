@@ -16,9 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 //PUBLIC ROUTES==============================================================================
 Route::get('/', \App\Http\Controllers\WelcomeController::class);
-Route::resource('users', \App\Http\Controllers\UserController::class);
-Route::resource('categories', \App\Http\Controllers\CategoryController::class);
-Route::resource('events', \App\Http\Controllers\MyEventController::class);
+Route::get('/event/overview', [\App\Http\Controllers\MyEventController::class, 'overview']);
+
 
 require __DIR__.'/auth.php';
 
@@ -27,10 +26,19 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
 });
 
-//ADMINROUTES==============================================================================
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function (){
+    Route::resource('events', \App\Http\Controllers\MyEventController::class);
+    Route::post('events/addparticipant', [\App\Http\Controllers\MyEventController::class, 'addparticipant'])->name('addparticipant');
+    Route::resource('users', \App\Http\Controllers\UserController::class);
+    Route::resource('categories', \App\Http\Controllers\CategoryController::class);
+});
+
+//ADMIN ROUTES==============================================================================
+Route::middleware(['auth','isAdmin'])->group(function () {
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
