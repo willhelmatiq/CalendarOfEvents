@@ -10,16 +10,16 @@ use Illuminate\Notifications\Notification;
 class WelcomeToNewUserNotification extends Notification
 {
     use Queueable;
-    private $articles;
+    private $myEvents;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($articles)
+    public function __construct($myEvents)
     {
-        $this->articles = $articles;
+        $this->myEvents = $myEvents;
     }
 
     /**
@@ -41,12 +41,12 @@ class WelcomeToNewUserNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        $list = $this->articles->map(fn ($a) => '<a href="'.route('articles.show', $a->id)."\">$a->title</a>")->implode(', ');
+        $list = $this->myEvents->map(fn ($a) => '<a href="'.route('events.show', $a->id)."\">$a->title</a>")->implode(', ');
         return (new MailMessage)
             ->greeting("Hello {$notifiable->name},")
             ->subject('Welcome to Harbour Space Demo')
             ->line('The introduction to the notification.')
-            ->line('Interested in our latest publications? Read one of the following:<br/>'.$list.'.')
+            ->line('Interested in our latest events? Look at one of the following:<br/>'.$list.'.')
             ->action('Log in and complete your profile', url('/home/profile'))
             ->line('Thank you for using our application!')
             ->salutation('Greetings from the full team');
