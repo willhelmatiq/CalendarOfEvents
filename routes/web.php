@@ -22,14 +22,10 @@ Route::get('/event/overview', [\App\Http\Controllers\MyEventController::class, '
 require __DIR__.'/auth.php';
 
 //LOGGED IN ROUTES==============================================================================
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function (){
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-
-});
-
-Route::middleware(['auth', 'verified'])->group(function (){
     Route::resource('events', \App\Http\Controllers\MyEventController::class);
     Route::post('events/addparticipant', [\App\Http\Controllers\MyEventController::class, 'addparticipant'])->name('addparticipant');
     Route::resource('users', \App\Http\Controllers\UserController::class);
