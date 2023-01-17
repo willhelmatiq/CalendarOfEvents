@@ -43,8 +43,8 @@ class WelcomeToNewUserNotification extends Notification
     {
         $list = $this->myEvents->map(fn ($a) => '<a href="'.route('events.show', $a->id)."\">$a->title</a>")->implode(', ');
         return (new MailMessage)
-            ->greeting("Hello {$notifiable->name},")
-            ->subject('Welcome to Harbour Space Demo')
+            ->greeting("Hello Саша,")
+            ->subject('Я тебя люблю. Будем ложиться спать?')
             ->line('The introduction to the notification.')
             ->line('Interested in our latest events? Look at one of the following:<br/>'.$list.'.')
             ->action('Log in and complete your profile', url('/home/profile'))
