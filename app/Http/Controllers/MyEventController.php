@@ -10,7 +10,7 @@ class MyEventController extends Controller
 {
     public function overview(Request $request)
     {
-        $events = MyEvent::all();
+        $events = MyEvent::paginate(5);
 
         return view('events.index', compact('events'));
     }

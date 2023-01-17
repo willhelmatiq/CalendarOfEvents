@@ -46,4 +46,5 @@
         @endif
     @endauth
     </ul>
+        {{$events->links()}}
 </x-site-layout>
