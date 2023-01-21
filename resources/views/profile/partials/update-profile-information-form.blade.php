@@ -47,6 +47,11 @@
             @endif
         </div>
 
+        <div>
+            <x-input-label for="name" :value="__('Birthday')" />
+            <input type="date" id="birthday" name="birthday" value="{{stristr($profile->birth_date, ' ', true)}}">
+        </div>
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
