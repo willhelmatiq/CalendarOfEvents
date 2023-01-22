@@ -30,6 +30,7 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::post('events/addparticipant', [\App\Http\Controllers\MyEventController::class, 'addparticipant'])->name('addparticipant');
     Route::resource('users', \App\Http\Controllers\UserController::class);
     Route::resource('categories', \App\Http\Controllers\CategoryController::class);
+    Route::get('countries', [App\Http\Controllers\CountryController::class]);
 });
 
 Route::middleware(['auth'])->group(function () {
