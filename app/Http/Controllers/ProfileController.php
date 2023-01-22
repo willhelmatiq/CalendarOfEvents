@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Country;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,10 +19,12 @@ class ProfileController extends Controller
      */
     public function edit(Request $request)
     {
-        ray(Profile::find($request->user()->id));
+//        ray(Country::all());
+//        ray(MyEvent::all());
         return view('profile.edit', [
             'user' => $request->user(),
-            'profile' =>Profile::find($request->user()->id),
+            'profile' => Profile::find($request->user()->id),
+            'countries' => Country::all(),
         ]);
     }
 
@@ -39,11 +42,13 @@ class ProfileController extends Controller
             $request->user()->email_verified_at = null;
         }
         $profile = Profile::find($request->user()->id);
-        ray($profile);
         $profile->birth_date = $request->birthday;
-        ray($profile);
 
         $request->user()->save();
+        if($request->country != null)
+        {
+            $profile->country_id = $request->country;
+        }
         $profile->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');

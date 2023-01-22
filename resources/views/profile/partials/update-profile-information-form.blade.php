@@ -48,8 +48,22 @@
         </div>
 
         <div>
-            <x-input-label for="name" :value="__('Birthday')" />
+            <x-input-label for="birthday" :value="__('Birthday')" />
             <input type="date" id="birthday" name="birthday" value="{{stristr($profile->birth_date, ' ', true)}}">
+        </div>
+
+        <div>
+            <x-input-label for="country" :value="__('Country')" />
+            <div class="wrapper"><select name="country" id="country" class="form-control" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+                    <option selected disabled hidden style='display: none' value=''>@if($profile->country_id === null)
+                        @else
+                            {{ $countries[$profile->country_id - 1]['name']}}
+                        @endif
+                    </option>
+                    @foreach($countries as $country)
+                    <option value="{{$country['id']}}">{{$country['name']}}</option>
+                    @endforeach
+                </select></div>
         </div>
 
         <div class="flex items-center gap-4">
