@@ -29,7 +29,9 @@ class DoInitialSeeding extends Command
      */
     public function handle()
     {
-        $response = Http::get('https://holidayapi.com/v1/countries?key=3cb15259-a914-4be3-96fa-841a5b394a2f');
+        $url = config('calendarofevents.holiday_api') . '/countries?key=' . config('calendarofevents.api_key');
+        ray($url);
+        $response = Http::get($url);
 
         $countries = collect(collect(json_decode($response->body(), true))->get("countries"))->sortBy('name');
         $countries->each(function($countryFromApi) {
