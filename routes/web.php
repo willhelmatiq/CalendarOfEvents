@@ -26,9 +26,9 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::resource('events', \App\Http\Controllers\MyEventController::class);
+//    Route::get('/', \App\Http\Controllers\WelcomeController::class);
+    Route::get('events', [\App\Http\Controllers\HolidayController::class, 'index'])->name('events');
     Route::post('events/addparticipant', [\App\Http\Controllers\MyEventController::class, 'addparticipant'])->name('addparticipant');
-    Route::resource('users', \App\Http\Controllers\UserController::class);
     Route::resource('categories', \App\Http\Controllers\CategoryController::class);
     Route::get('countries', [App\Http\Controllers\CountryController::class]);
 });
@@ -42,6 +42,7 @@ Route::middleware(['auth'])->group(function () {
 //ADMIN ROUTES==============================================================================
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     // admin routes come here
+    Route::resource('users', \App\Http\Controllers\UserController::class);
 });
 
 

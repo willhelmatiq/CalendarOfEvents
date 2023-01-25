@@ -15,11 +15,9 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamp('birth_date')->nullable();
             $table->string('profile_picture')->default('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png');
-
             $table->timestamps();
         });
     }
