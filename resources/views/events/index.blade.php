@@ -1,50 +1,43 @@
 <x-site-layout title="Events">
-    @if(auth()->user()->is_admin)
-    <div class="mb-6 flex justify-end">
-        <a href="{{route(('events.create'))}}" class="p-2 bg-green-500 text-green-50 rounded">Add event</a>
-    </div>
-    @endif()
-
-
     <ul>
-    @guest
-        @foreach($events as $event)
-            <li>
-                <a href="{{route('events.show', $event->id)}}" class="undeeline hover:bg-gray-200">
-                    <span class="font-semibold">{{$event->title}}</span>
-                    <span class="test-sm">{{$event->city}}</span>
-                </a>
-            </li>
-        @endforeach
-    @endguest
+{{--    @guest--}}
+{{--        @foreach($events as $event)--}}
+{{--            <li>--}}
+{{--                <a href="" class="undeeline hover:bg-gray-200">--}}
+{{--                    <span class="font-semibold">{{$event->name}}</span>--}}
+{{--                    <span class="test-sm">{{$event->city}}</span>--}}
+{{--                </a>--}}
+{{--            </li>--}}
+{{--        @endforeach--}}
+{{--    @endguest--}}
     @auth
-        @if(!auth()->user()->is_admin)
-            @foreach($events as $event)
-                <li>
-                    <a href="{{route('events.show', $event->id)}}" class="undeeline hover:bg-gray-200">
-                        <span class="font-semibold">{{$event->title}}</span>
-                        <span class="test-sm">{{$event->city}}</span>
-                    </a>
-                    <form method="post" action="{{route('addparticipant', $event->id)}}">
-                        @csrf
-                        <button type="submit" class="p-2 bg-green-500 text-green-50 rounded-lg">participate</button>
-                    </form>
-                    <span class="font-semibold">{{collect($event->participants)->count()}}</span>
-                </li>
-            @endforeach
-        @else
-                @foreach($events as $event)
+{{--        @if(!auth()->user()->is_admin)--}}
+{{--            @foreach($events as $event)--}}
+{{--                <li>--}}
+{{--                    <a href="" class="undeeline hover:bg-gray-200">--}}
+{{--                        <span class="font-semibold">{{$event->name}}</span>--}}
+{{--                        <span class="test-sm">{{$event->country}}</span>--}}
+{{--                    </a>--}}
+{{--                    <form method="post" action="{{route('addparticipant', $event->id)}}">--}}
+{{--                        @csrf--}}
+{{--                        <button type="submit" class="p-2 bg-green-500 text-green-50 rounded-lg">participate</button>--}}
+{{--                    </form>--}}
+{{--                    <span class="font-semibold">{{collect($event->participants)->count()}}</span>--}}
+{{--                </li>--}}
+{{--            @endforeach--}}
+{{--        @else--}}
+                @foreach($holidays as $holiday)
                     <li>
-                        <a href="{{route('events.show', $event->id)}}" class="undeeline hover:bg-gray-200">
-                            <span class="font-semibold">{{$event->title}}</span>
-                            <span class="test-sm">{{$event->city}}</span>
+                        <a href="" class="undeeline hover:bg-gray-200">
+                            <span class="font-semibold">{{$holiday->name}}</span>
+                            <span class="test-sm">{{$holiday->date}}</span>
                         </a>
-                        <a href="{{route('events.edit', $event->id)}}">edit</a>
-                        <span class="font-semibold">{{collect($event->participants)->count()}}</span>
+{{--                        <a href="{{route('events.edit', $event->id)}}">edit</a>--}}
+{{--                        <span class="font-semibold">{{collect($event->participants)->count()}}</span>--}}
                     </li>
                 @endforeach
-        @endif
+{{--        @endif--}}
     @endauth
     </ul>
-        {{$events->links()}}
+        {{$holidays->links()}}
 </x-site-layout>
