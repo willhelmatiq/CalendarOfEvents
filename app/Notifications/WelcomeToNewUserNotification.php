@@ -41,7 +41,7 @@ class WelcomeToNewUserNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        $list = $this->myEvents->map(fn ($a) => '<a href="'.route('events.show', $a->id)."\">$a->title</a>")->implode(', ');
+        $list = $this->myEvents->map(fn ($a) => '<a href="'.route('holidays.show', $a->id)."\">$a->title</a>")->implode(', ');
         return (new MailMessage)
             ->greeting("Hello {$notifiable->name},")
             ->subject('Welcome to Harbour Space Demo')

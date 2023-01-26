@@ -76,7 +76,7 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
 {{--            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">--}}
-{{--                {{ __('See events') }}--}}
+{{--                {{ __('See holidays') }}--}}
 {{--            </x-responsive-nav-link>--}}
         </div>
 

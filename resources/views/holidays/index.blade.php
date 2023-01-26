@@ -1,7 +1,7 @@
 <x-site-layout title="Events">
     <ul>
 {{--    @guest--}}
-{{--        @foreach($events as $event)--}}
+{{--        @foreach($holidays as $event)--}}
 {{--            <li>--}}
 {{--                <a href="" class="undeeline hover:bg-gray-200">--}}
 {{--                    <span class="font-semibold">{{$event->name}}</span>--}}
@@ -12,7 +12,7 @@
 {{--    @endguest--}}
     @auth
 {{--        @if(!auth()->user()->is_admin)--}}
-{{--            @foreach($events as $event)--}}
+{{--            @foreach($holidays as $event)--}}
 {{--                <li>--}}
 {{--                    <a href="" class="undeeline hover:bg-gray-200">--}}
 {{--                        <span class="font-semibold">{{$event->name}}</span>--}}
@@ -31,8 +31,9 @@
                         <a href="" class="undeeline hover:bg-gray-200">
                             <span class="font-semibold">{{$holiday->name}}</span>
                             <span class="test-sm">{{$holiday->date}}</span>
+                            <a href="{{route('holidays.edit', $holiday->id)}}">edit</a>--}}
                         </a>
-{{--                        <a href="{{route('events.edit', $event->id)}}">edit</a>--}}
+{{--                        <a href="{{route('holidays.edit', $event->id)}}">edit</a>--}}
 {{--                        <span class="font-semibold">{{collect($event->participants)->count()}}</span>--}}
                     </li>
                 @endforeach

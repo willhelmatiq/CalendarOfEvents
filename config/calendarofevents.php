@@ -14,7 +14,7 @@ return [
 //        ],
         [
             'title' => 'Holidays',
-            'url' => '/events',
+            'url' => '/holidays',
         ],
 //        [
 //            'title' => 'Categories',

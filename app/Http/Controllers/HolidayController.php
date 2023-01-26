@@ -22,8 +22,8 @@ class HolidayController extends Controller
 
         $holidays1 = $this->holidayEventsService->listHolidays('ES');
         $holidays = CollectionHelper::paginate($holidays1, 5);
-//        ray($events);
-//        dd($events);
-        return view('events.index', compact('holidays'));
+//        ray($holidays);
+//        dd($holidays);
+        return view('holidays.index', compact('holidays'));
     }
 }

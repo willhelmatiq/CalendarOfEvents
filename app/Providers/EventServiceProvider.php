@@ -21,7 +21,7 @@ class EventServiceProvider extends ServiceProvider
     ];
 
     /**
-     * Register any events for your application.
+     * Register any holidays for your application.
      *
      * @return void
      */
@@ -31,7 +31,7 @@ class EventServiceProvider extends ServiceProvider
     }
 
     /**
-     * Determine if events and listeners should be automatically discovered.
+     * Determine if holidays and listeners should be automatically discovered.
      *
      * @return bool
      */
