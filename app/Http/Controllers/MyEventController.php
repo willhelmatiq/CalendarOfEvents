@@ -10,34 +10,34 @@ class MyEventController extends Controller
 {
     public function overview(Request $request)
     {
-        $events = MyEvent::paginate(5);
+        $events = MyEvent::all();
 
-        return view('events.index', compact('events'));
+        return view('holidays.index', compact('events'));
     }
     public function index(Request $request)
     {
         $events = MyEvent::with('participants')->get();
         ray($events);
-        return view('events.index', compact('events'));
+        return view('holidays.index', compact('events'));
     }
 
     public function show($id)
     {
         $event = MyEvent::find($id);
 
-        return view('events.show', compact('event'));
+        return view('holidays.show', compact('event'));
     }
 
     public function create()
     {
-        return view('events.create');
+        return view('holidays.create');
     }
 
     public function edit($id)
     {
         $event = MyEvent::find($id);
 
-        return view('events.edit', compact('event'));
+        return view('holidays.edit', compact('event'));
     }
 
     public function update($id, Request $request)
@@ -61,7 +61,7 @@ class MyEventController extends Controller
         ////            'category_id' => '1',
 //        ]);
 
-        return redirect()->route('events.show', $event->id);
+        return redirect()->route('holidays.show', $event->id);
     }
 
     public function store(Request $request)
@@ -84,7 +84,7 @@ class MyEventController extends Controller
         ]);
         ray($event);
 
-        return redirect()->route('events.index');
+        return redirect()->route('holidays.index');
     }
 
     public function addparticipant(Request $request){
@@ -94,7 +94,12 @@ class MyEventController extends Controller
 //        $event = MyEvent::find($eventId);
 //        $event->participants()->attach($user->id);
 
-        return redirect()->route('events.index');
+        return redirect()->route('holidays.index');
 
+    }
+
+    public function __invoke()
+    {
+        // ...
     }
 }

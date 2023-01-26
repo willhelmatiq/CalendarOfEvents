@@ -1,4 +1,4 @@
-<x-site-layout title="Events">
+<x-site-layout title="Events" :uses_livewire="true">
     <ul>
 {{--    @guest--}}
 {{--        @foreach($holidays as $event)--}}
@@ -31,8 +31,8 @@
                         <a href="" class="undeeline hover:bg-gray-200">
                             <span class="font-semibold">{{$holiday->name}}</span>
                             <span class="test-sm">{{$holiday->date}}</span>
-                            <a href="{{route('holidays.edit', $holiday->id)}}">edit</a>--}}
                         </a>
+                        <span> <livewire:subscribe /></span>
 {{--                        <a href="{{route('holidays.edit', $event->id)}}">edit</a>--}}
 {{--                        <span class="font-semibold">{{collect($event->participants)->count()}}</span>--}}
                     </li>

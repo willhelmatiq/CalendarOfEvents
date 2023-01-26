@@ -28,6 +28,8 @@ Route::middleware(['auth', 'verified'])->group(function (){
     })->name('dashboard');
 //    Route::get('/', \App\Http\Controllers\WelcomeController::class);
     Route::get('events', [\App\Http\Controllers\HolidayController::class, 'index'])->name('events');
+    Route::get('/livewiretest', \App\Http\Controllers\LivewireTestController::class)->name('livewiretest');
+
     Route::post('events/addparticipant', [\App\Http\Controllers\MyEventController::class, 'addparticipant'])->name('addparticipant');
     Route::resource('categories', \App\Http\Controllers\CategoryController::class);
     Route::get('countries', [App\Http\Controllers\CountryController::class]);

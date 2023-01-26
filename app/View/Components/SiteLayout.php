@@ -12,7 +12,8 @@ class SiteLayout extends Component
      * @return void
      */
     public function __construct(
-        public string $title = 'MySite '
+        public string $title = 'MySite ',
+        public bool $uses_livewire = true,
     ) {
     }
 
